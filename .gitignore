@@ -54,6 +54,7 @@ ExportedObj/
 
 # 3D Assets meta files
 /[Aa]ssets/3DAssets/*.meta
+/[Aa]ssets/3DAssets/*.obj.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
