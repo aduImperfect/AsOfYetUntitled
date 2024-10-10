@@ -1,9 +1,0 @@
-﻿public enum PathfindingTerrainTypes
-{
-    NORMAL_TERRAIN,
-    DIFFICULT_TERRAIN,
-    HAZARDOUS_TERRAIN,
-    NARROW_TERRAIN,
-    UNEVEN_TERRAIN,
-    INCLINED_TERRAIN
-}

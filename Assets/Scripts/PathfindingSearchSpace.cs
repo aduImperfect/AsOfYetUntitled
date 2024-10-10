@@ -1,6 +1,6 @@
 ﻿public enum PathfindingSearchSpace
 {
     SQUARE,
-    HEXAGON,
-    DEFAULT
+    SQUARENONDIAGONAL,
+    HEXAGON
 }
