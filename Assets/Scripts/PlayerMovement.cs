@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,14 +9,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool destinationSelected;
     [SerializeField] public GameObject destinationObject;
     [SerializeField] public Vector3 startingPos;
+    [SerializeField] public Vector3 movingPos;
     [SerializeField] public Vector3 destinationPos;
     [SerializeField] public List<Vector3> finalPath;
     [SerializeField] public List<float> finalPathCost;
     [SerializeField] public FaceDirection currentDirection;
+    [SerializeField] public FaceDirection newDirection;
+    [SerializeField] public Quaternion oldDirectionQuat;
+    [SerializeField] public Quaternion newDirectionQuat;
+
+    [SerializeField] public float lerpSpeed = 0.01f;
+    [SerializeField] public float timeCountForRotation = 0.0f;
+    [SerializeField] public float timeCountForMovement = 0.0f;
+
+    [SerializeField] public int baseDirectionRotationVal = 45;
+    [SerializeField] public bool isTurning = false;
+    [SerializeField] public bool isMoving = false;
+    [SerializeField] public int directionChangeAmount = 0;
+    [SerializeField] public Vector3 newDestination;
 
     private void Awake()
     {
-        currentDirection = FaceDirection.NORTH;
+        newDirection = currentDirection = FaceDirection.NORTH;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,6 +43,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update()
+    {
+        SelectPlayerAndDestination();
+
+        if (isTurning)
+        {
+            TurnOrientation();
+        }
+        else
+        {
+            currentDirection = newDirection;
+        }
+
+        if (isMoving && !isTurning)
+        {
+            MoveCharacter();
+        }
+    }
+
+    private void SelectPlayerAndDestination()
     {
         GameObject selectedObj = MouseTracker.instance.GetSelectedGameObject();
 
@@ -71,48 +105,71 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        FaceDirection charDirection = CharacterFacingDirection.GetDirection(finalPath[0], finalPath[1]);
+        newDirection = CharacterFacingDirection.GetDirection(finalPath[0], finalPath[1]);
+        SetFinalOrientation();
+        SetMovement();
+    }
 
-        this.transform.parent.rotation = Quaternion.identity;
-
-        switch (charDirection)
+    private void SetFinalOrientation()
+    {
+        //Already facing same direction
+        if (newDirection == currentDirection)
         {
-            case FaceDirection.NORTH:
-                this.transform.parent.rotation = Quaternion.identity;
-                break;
-            case FaceDirection.NORTHEAST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(45, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.EAST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(90, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.SOUTHEAST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(135, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.SOUTH:
-                this.transform.parent.rotation = Quaternion.AngleAxis(180, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.SOUTHWEST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(225, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.WEST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(270, Vector3.up) * this.transform.parent.rotation;
-                break;
-            case FaceDirection.NORTHWEST:
-                this.transform.parent.rotation = Quaternion.AngleAxis(315, Vector3.up) * this.transform.parent.rotation;
-                break;
+            isTurning = false;
+            return;
         }
 
-        currentDirection = charDirection;
+        directionChangeAmount = newDirection - currentDirection;
+
+        oldDirectionQuat = this.transform.parent.rotation;
+        newDirectionQuat = Quaternion.AngleAxis(baseDirectionRotationVal * directionChangeAmount, Vector3.up) * this.transform.parent.rotation;
+        timeCountForRotation = 0.0f;
+        isTurning = true;
+    }
+
+    private void TurnOrientation()
+    {
+        this.transform.parent.rotation = Quaternion.Lerp(oldDirectionQuat, newDirectionQuat, timeCountForRotation * lerpSpeed);
+        timeCountForRotation += Time.deltaTime;
+
+        if (this.transform.parent.rotation == newDirectionQuat)
+        {
+            timeCountForRotation = 0.0f;
+            isTurning = false;
+        }
+    }
+
+    private void SetMovement()
+    {
+        if (finalPath.Count <= 1)
+        {
+            return;
+        }
+
+        movingPos = finalPath[0];
 
         float posY = this.transform.parent.position.y;
-        Vector3 newDest = finalPath[1];
-        newDest.y = posY;
+        newDestination = finalPath[1];
+        newDestination.y = posY;
+        movingPos.y = posY;
 
-        this.transform.parent.position = newDest;
+        isMoving = true;
+    }
 
-        //Remove the existing current position.
-        finalPath.RemoveAt(0);
+    private void MoveCharacter()
+    {
+        Vector3 currPos = Vector3.Lerp(movingPos, newDestination, timeCountForMovement * lerpSpeed);
+        this.transform.parent.position = currPos;
+
+        timeCountForMovement += Time.deltaTime;
+
+        if (currPos == newDestination)
+        {
+            timeCountForMovement = 0.0f;
+            startingPos = newDestination;
+            isMoving = false;
+            //Remove the existing current position.
+            finalPath.RemoveAt(0);
+        }
     }
 }
-

@@ -2,7 +2,7 @@
 
 public enum FaceDirection
 {
-    NORTH,
+    NORTH = 0,
     NORTHEAST,
     EAST,
     SOUTHEAST,
