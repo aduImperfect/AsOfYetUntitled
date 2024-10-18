@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Neighbours
 {
-    private static float unitSize = 50.0f;
+    private static float unitSize = 25.0f;
 
     public static void FindNeighbours(Vector3 position, ref List<Vector3> neighbours, PathfindingSearchSpace searchSpace)
     {
@@ -29,19 +29,19 @@ public static class Neighbours
 
         for (int i = -1; i < 2; ++i)
         {
-            for (int j = -1; j < 2; ++j)
-            {
+            //for (int j = -1; j < 2; ++j)
+            //{
                 for (int k = -1; k < 2; ++k)
                 {
                     //Refers to current position that is not needed in the list of neighbours.
-                    if ((i == 0) && (i == j) && (i == k))
+                    if ((i == 0) && (i == k))
                     {
                         continue;
                     }
 
-                    neighbours.Add(new Vector3(position.x + (i * unitSize), position.y + (j * unitSize), position.z + (k * unitSize)));
+                    neighbours.Add(new Vector3(position.x + (i * unitSize), position.y, position.z + (k * unitSize)));
                 }
-            }
+            //}
         }
     }
 
@@ -51,25 +51,25 @@ public static class Neighbours
 
         for (int i = -1; i < 2; ++i)
         {
-            for (int j = -1; j < 2; ++j)
-            {
+            //for (int j = -1; j < 2; ++j)
+            //{
                 for (int k = -1; k < 2; ++k)
                 {
                     //Refers to current position that is not needed in the list of neighbours.
-                    if ((i == 0) && (i == j) && (i == k))
+                    if ((i == 0) && (k == 0))
                     {
                         continue;
                     }
 
                     //Diagonals
-                    if ((i != 0) && ((i == j) || (i == k)))
+                    if (Mathf.Abs(i) == Mathf.Abs(k))
                     {
                         continue;
                     }
 
-                    neighbours.Add(new Vector3(position.x + (i * unitSize), position.y + (j * unitSize), position.z + (k * unitSize)));
+                    neighbours.Add(new Vector3(position.x + (i * unitSize), position.y, position.z + (k * unitSize)));
                 }
-            }
+            //}
         }
 
     }

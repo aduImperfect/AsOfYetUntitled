@@ -22,6 +22,7 @@ public class MouseHandler
 
     public static GameObject GetGameObjectAtPosition()
     {
+        GetTaggedParent.GetTaggedParentObject(ref gameObjectAtPos);
         return gameObjectAtPos;
     }
 

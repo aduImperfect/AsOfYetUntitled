@@ -22,6 +22,15 @@ public static class PathfindingHandler
         return currentPathCost;
     }
 
+    public static void ClearCurrentPath()
+    {
+        currentPath.Clear();
+    }
+    public static void ClearCurrentPathCost()
+    {
+        currentPathCost.Clear();
+    }
+
     public static void CalculatePath(Vector3 posStart, Vector3 posGoal, PathfindingAlgorithmType algorithmType)
     {
         switch (algorithmType)
@@ -40,6 +49,37 @@ public static class PathfindingHandler
 
     private static void CalculatePathUsingAStar(Vector3 posStart, Vector3 posGoal)
     {
+        if (pathfindingFrontier == null)
+        {
+            pathfindingFrontier = new PriorityQueue<Vector3, float>();
+        }
+
+        if (cameFromDictionary == null)
+        {
+            cameFromDictionary = new Dictionary<Vector3, Vector3> ();
+        }
+
+        if (costSoFarDictionary == null)
+        {
+            costSoFarDictionary = new Dictionary<Vector3, float>();
+        }
+
+        if (currentPath == null)
+        {
+            currentPath = new List<Vector3>();
+        }
+
+        if (currentPathCost == null)
+        {
+            currentPathCost = new List<float>();
+        }
+
+        pathfindingFrontier.Clear();
+        cameFromDictionary.Clear();
+        costSoFarDictionary.Clear();
+        currentPath.Clear();
+        currentPathCost.Clear();
+
         //frontier.put (start, 0).
         pathfindingFrontier.Enqueue(posStart, 0);
 
@@ -69,6 +109,12 @@ public static class PathfindingHandler
                 //newCost = costSoFar[current] + graph.cost(current, next).
                 float newCost = costSoFarDictionary[currentPos] + Heuristics.CalculateActualCost(currentPos, neighbourPos);
 
+                //If value does not exist.. Set it to maximum floating value.
+                if (costSoFarDictionary.ContainsKey(neighbourPos) == false)
+                {
+                    costSoFarDictionary[neighbourPos] = float.MaxValue;
+                }
+
                 //if next not in costSoFar or newCost < costSoFar[next].
                 if (newCost < costSoFarDictionary[neighbourPos])
                 {
@@ -86,12 +132,6 @@ public static class PathfindingHandler
                 }
             }
         }
-
-        currentPath = new List<Vector3>();
-        currentPath.Clear();
-
-        currentPathCost = new List<float>();
-        currentPathCost.Clear();
 
         Vector3 currPos = posGoal;
         currentPath.Add(currPos);
