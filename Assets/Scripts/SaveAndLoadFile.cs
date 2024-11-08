@@ -66,9 +66,10 @@ public static class SaveAndLoadFile
                 }
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             //Log exception here
+            Console.WriteLine(ex);
         }
 
         return objectOut;

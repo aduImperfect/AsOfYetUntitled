@@ -1,6 +1,94 @@
 ﻿using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UI;
+
+public class FloorTileInfo : IXmlSerializable
+{
+    [XmlAttribute("FloorTilePrefabId")]
+    public int floorTilePrefabId;
+
+    [XmlAttribute("FloorTilePosition")]
+    public Vector3 floorTilePosition;
+
+    [XmlAttribute("FloorTileOrientation")]
+    public Quaternion floorTileOrientation;
+
+    [XmlAttribute("FloorTileTerrainType")]
+    public PathfindingTerrainType floorTileTerrainType;
+
+    public FloorTileInfo()
+    {
+        floorTilePrefabId = -1;
+        floorTilePosition = Vector3.zero;
+        floorTileOrientation = Quaternion.identity;
+        floorTileTerrainType = PathfindingTerrainType.INVALID_TERRAIN;
+    }
+
+    public FloorTileInfo(GameObject obj)
+    {
+        floorTilePrefabId = -1;
+        floorTilePosition = obj.transform.position;
+        floorTileOrientation = obj.transform.rotation;
+        floorTileTerrainType = PathfindingTerrainType.INVALID_TERRAIN;
+    }
+
+    public void SetData(GameObject obj)
+    {
+        floorTilePrefabId = -1;
+        floorTilePosition = obj.transform.position;
+        floorTileOrientation = obj.transform.rotation;
+        floorTileTerrainType = PathfindingTerrainType.INVALID_TERRAIN;
+    }
+
+    public XmlSchema GetSchema()
+    {
+        return (null);
+    }
+
+    public void ReadXml(XmlReader reader)
+    {
+        reader.ReadStartElement("FloorTileInfo");
+
+        reader.ReadStartElement("FloorTilePrefabId");
+        floorTilePrefabId = StringParserWrapper.GetInt(reader.ReadString());
+        reader.ReadEndElement();
+
+        reader.ReadStartElement("FloorTilePosition");
+        floorTilePosition = StringParserWrapper.GetVector3(reader.ReadString());
+        reader.ReadEndElement();
+
+        reader.ReadStartElement("FloorTileOrientation");
+        floorTileOrientation = StringParserWrapper.GetQuaternion(reader.ReadString());
+        reader.ReadEndElement();
+
+        reader.ReadStartElement("FloorTileTerrainType");
+        floorTileTerrainType = StringParserWrapper.GetEnumPathfindingTerrainType(reader.ReadString());
+        reader.ReadEndElement();
+
+        reader.ReadEndElement();
+    }
+
+    public void WriteXml(XmlWriter writer)
+    {
+        writer.WriteStartElement("FloorTilePrefabId");
+        writer.WriteString(floorTilePrefabId.ToString());
+        writer.WriteEndElement();
+
+        writer.WriteStartElement("FloorTilePosition");
+        writer.WriteString(floorTilePosition.ToString());
+        writer.WriteEndElement();
+
+        writer.WriteStartElement("FloorTileOrientation");
+        writer.WriteString(floorTileOrientation.ToString());
+        writer.WriteEndElement();
+
+        writer.WriteStartElement("FloorTileTerrainType");
+        writer.WriteString(floorTileTerrainType.ToString());
+        writer.WriteEndElement();
+    }
+}
 
 public class DungeonGeneratorFileInfo
 {
@@ -10,10 +98,7 @@ public class DungeonGeneratorFileInfo
     public int unitSize;
     public int floorCounterPrefix;
     public string floorParent;
-    public List<int> floorPrefabIdentifiers;
-    public List<Vector3> floorPositions;
-    public List<Quaternion> floorOrientations;
-    public List<PathfindingTerrainType> floorTerrainTypes;
+    public List<FloorTileInfo> floorTiles;
 
     public DungeonGeneratorFileInfo()
     {
@@ -23,10 +108,7 @@ public class DungeonGeneratorFileInfo
         unitSize = -1;
         floorCounterPrefix = -1;
         floorParent = "NULL";
-        floorPrefabIdentifiers = new List<int>();
-        floorPositions = new List<Vector3>();
-        floorOrientations = new List<Quaternion>();
-        floorTerrainTypes = new List<PathfindingTerrainType>();
+        floorTiles = new List<FloorTileInfo>();
     }
 }
 
@@ -43,7 +125,6 @@ public class DungeonGenerator : MonoBehaviour
 
     private List<int> floorPrefabIds = new List<int>();
     private List<GameObject> generatedDungeonObjects = new List<GameObject>();
-
 
     private void Awake()
     {
@@ -64,13 +145,14 @@ public class DungeonGenerator : MonoBehaviour
             {
                 for (int zIndex = 0; zIndex < zSize; ++zIndex)
                 {
-                    int randomVal = Random.Range(-1, differentFloorsCount);
+                    int randomVal = UnityEngine.Random.Range(-1, differentFloorsCount);
 
                     floorPrefabIds.Add(randomVal);
 
                     if (randomVal == -1)
                     {
                         generatedDungeonObjects.Add(null);
+                        floorPrefabIds.Remove(randomVal);
                     }
                     else
                     {
@@ -94,6 +176,15 @@ public class DungeonGenerator : MonoBehaviour
 
     public void SaveGeneratedDungeonToFile()
     {
+        //Remove all non-null elements!!
+        generatedDungeonObjects.RemoveAll(item => item != null);
+
+        //Re-add with updated information from the generator parent!
+        foreach (Transform child in this.transform)
+        {
+            generatedDungeonObjects.Add(child.gameObject);
+        }
+
         if (generatedDungeonObjects.Count == 0)
         {
             return;
@@ -111,33 +202,36 @@ public class DungeonGenerator : MonoBehaviour
         dungeonGeneratorFileInfo.floorCounterPrefix = 0;
         dungeonGeneratorFileInfo.floorParent = this.transform.name;
 
-        dungeonGeneratorFileInfo.floorPrefabIdentifiers.Clear();
-        dungeonGeneratorFileInfo.floorPositions.Clear();
-        dungeonGeneratorFileInfo.floorOrientations.Clear();
-        dungeonGeneratorFileInfo.floorTerrainTypes.Clear();
+        dungeonGeneratorFileInfo.floorTiles.Clear();
 
         int floorPrefabsInc = 0;
 
         foreach (GameObject generatedObject in generatedDungeonObjects)
         {
-            dungeonGeneratorFileInfo.floorPrefabIdentifiers.Add(floorPrefabIds[floorPrefabsInc]);
+            FloorTileInfo newFlrTileInfo = new FloorTileInfo();
 
-            //Add the invalid empty floors as well!!
             if (generatedObject == null)
             {
-                dungeonGeneratorFileInfo.floorPositions.Add(Vector3.zero);
-                dungeonGeneratorFileInfo.floorOrientations.Add(Quaternion.identity);
-                dungeonGeneratorFileInfo.floorTerrainTypes.Add(PathfindingTerrainType.INVALID_TERRAIN);
+                //Default values (works also for invalid floor tiles as well!!).
+                newFlrTileInfo.floorTilePrefabId = -1;
+                newFlrTileInfo.floorTilePosition = Vector3.zero;
+                newFlrTileInfo.floorTileOrientation = Quaternion.identity;
+                newFlrTileInfo.floorTileTerrainType = PathfindingTerrainType.INVALID_TERRAIN;
             }
             else
             {
-                dungeonGeneratorFileInfo.floorPositions.Add(generatedObject.transform.position);
-                dungeonGeneratorFileInfo.floorOrientations.Add(generatedObject.transform.rotation);
-                dungeonGeneratorFileInfo.floorTerrainTypes.Add(PathfindingTerrainType.NORMAL_TERRAIN);
+                newFlrTileInfo.floorTilePrefabId = floorPrefabIds[floorPrefabsInc];
+                newFlrTileInfo.floorTilePosition = generatedObject.transform.position;
+                newFlrTileInfo.floorTileOrientation = generatedObject.transform.rotation;
+                newFlrTileInfo.floorTileTerrainType = PathfindingTerrainType.NORMAL_TERRAIN;
+
+                //Only increment this for the valid index range!
+                ++floorPrefabsInc;
             }
 
+            dungeonGeneratorFileInfo.floorTiles.Add(newFlrTileInfo);
+
             //Increment counters.
-            ++floorPrefabsInc;
             ++dungeonGeneratorFileInfo.floorCounterPrefix;
         }
 
@@ -173,13 +267,16 @@ public class DungeonGenerator : MonoBehaviour
         int instantiatedObjCount = 0;
         for (int floorIndex = 0; floorIndex < dungeonGeneratorFileInfo.floorCounterPrefix; ++floorIndex)
         {
-            if (dungeonGeneratorFileInfo.floorTerrainTypes[floorIndex] == PathfindingTerrainType.INVALID_TERRAIN)
+            if (dungeonGeneratorFileInfo.floorTiles[floorIndex].floorTileTerrainType == PathfindingTerrainType.INVALID_TERRAIN)
             {
                 generatedDungeonObjects.Add(null);
             }
             else
             {
-                GameObject dungeonObj = Instantiate(floorPrefabs[dungeonGeneratorFileInfo.floorPrefabIdentifiers[floorIndex]], dungeonGeneratorFileInfo.floorPositions[floorIndex], dungeonGeneratorFileInfo.floorOrientations[floorIndex], parentObj.transform);
+                //Store the prefabIds.
+                floorPrefabIds.Add(dungeonGeneratorFileInfo.floorTiles[floorIndex].floorTilePrefabId);
+
+                GameObject dungeonObj = Instantiate(floorPrefabs[dungeonGeneratorFileInfo.floorTiles[floorIndex].floorTilePrefabId], dungeonGeneratorFileInfo.floorTiles[floorIndex].floorTilePosition, dungeonGeneratorFileInfo.floorTiles[floorIndex].floorTileOrientation, parentObj.transform);
                 dungeonObj.name = instantiatedObjCount + "_" + dungeonObj.name;
                 generatedDungeonObjects.Add(dungeonObj);
 

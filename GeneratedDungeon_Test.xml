@@ -1,179 +1,161 @@
 <?xml version="1.0"?>
 <DungeonGeneratorFileInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <xSize>3</xSize>
+  <xSize>5</xSize>
   <ySize>1</ySize>
-  <zSize>3</zSize>
+  <zSize>5</zSize>
   <unitSize>25</unitSize>
-  <floorCounterPrefix>9</floorCounterPrefix>
+  <floorCounterPrefix>25</floorCounterPrefix>
   <floorParent>DungeonGenerator</floorParent>
-  <floorPrefabIdentifiers>
-    <int>0</int>
-    <int>0</int>
-    <int>-1</int>
-    <int>1</int>
-    <int>0</int>
-    <int>-1</int>
-    <int>2</int>
-    <int>0</int>
-    <int>2</int>
-  </floorPrefabIdentifiers>
-  <floorPositions>
-    <Vector3>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-    </Vector3>
-    <Vector3>
-      <x>0</x>
-      <y>0</y>
-      <z>25</z>
-    </Vector3>
-    <Vector3>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-    </Vector3>
-    <Vector3>
-      <x>25</x>
-      <y>0</y>
-      <z>0</z>
-    </Vector3>
-    <Vector3>
-      <x>25</x>
-      <y>0</y>
-      <z>25</z>
-    </Vector3>
-    <Vector3>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-    </Vector3>
-    <Vector3>
-      <x>50</x>
-      <y>0</y>
-      <z>0</z>
-    </Vector3>
-    <Vector3>
-      <x>50</x>
-      <y>0</y>
-      <z>25</z>
-    </Vector3>
-    <Vector3>
-      <x>50</x>
-      <y>0</y>
-      <z>50</z>
-    </Vector3>
-  </floorPositions>
-  <floorOrientations>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>0</x>
-      <y>0</y>
-      <z>0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-    <Quaternion>
-      <x>-0</x>
-      <y>-0</y>
-      <z>-0</z>
-      <w>1</w>
-      <eulerAngles>
-        <x>-0</x>
-        <y>0</y>
-        <z>0</z>
-      </eulerAngles>
-    </Quaternion>
-  </floorOrientations>
-  <floorTerrainTypes>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>INVALID_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>INVALID_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-    <PathfindingTerrainType>NORMAL_TERRAIN</PathfindingTerrainType>
-  </floorTerrainTypes>
+  <floorTiles>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>-1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>INVALID_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>1</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 75.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(25.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(25.00, 0.00, 75.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(25.00, 0.00, 100.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(50.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 50.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(50.00, 0.00, 75.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(50.00, 0.00, 100.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(75.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(0.00, 0.00, 25.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(75.00, 0.00, 50.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(75.00, 0.00, 75.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(75.00, 0.00, 100.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(100.00, 0.00, 0.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(100.00, 0.00, 25.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(100.00, 0.00, 50.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>0</FloorTilePrefabId>
+      <FloorTilePosition>(100.00, 0.00, 75.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+    <FloorTileInfo>
+      <FloorTilePrefabId>2</FloorTilePrefabId>
+      <FloorTilePosition>(100.00, 0.00, 100.00)</FloorTilePosition>
+      <FloorTileOrientation>(0.00000, 0.00000, 0.00000, 1.00000)</FloorTileOrientation>
+      <FloorTileTerrainType>NORMAL_TERRAIN</FloorTileTerrainType>
+    </FloorTileInfo>
+  </floorTiles>
 </DungeonGeneratorFileInfo>
