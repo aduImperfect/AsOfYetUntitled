@@ -1,0 +1,7 @@
+public enum HeuristicType
+{
+    CHEBYSHEV_DISTANCE,
+    MANHATTAN_DISTANCE,
+    EUCLIDEAN_DISTANCE,
+    OCTILE_DISTANCE
+}

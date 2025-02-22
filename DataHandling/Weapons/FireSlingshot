@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<WeaponData>
+  <WeaponName>FireSlingshot</WeaponName>
+  <WeaponType>WEAPON_RANGED</WeaponType>
+  <WeaponTraitsList>
+    <WeaponTraitsCount>2</WeaponTraitsCount>
+    <WeaponTraitType>WEAPONTRAIT_AMMUNITION</WeaponTraitType>
+    <WeaponTraitType>WEAPONTRAIT_HEAVY</WeaponTraitType>
+  </WeaponTraitsList>
+  <WeaponDamageType>DAMAGE_BLUDGEON</WeaponDamageType>
+  <WeaponSpecialDamagesList>
+    <WeaponSpecialDamagesCount>1</WeaponSpecialDamagesCount>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_FIRE</WeaponSpecialDamageType>
+  </WeaponSpecialDamagesList>
+  <WeaponAttackTimingsList>
+    <WeaponAttackTimingsCount>1</WeaponAttackTimingsCount>
+    <WeaponAttackTimingType>ATTACKTIMING_CHARGED</WeaponAttackTimingType>
+  </WeaponAttackTimingsList>
+  <WeaponContactFramesList>
+    <WeaponContactFramesCount>1</WeaponContactFramesCount>
+    <WeaponContactFrameType>10</WeaponContactFrameType>
+  </WeaponContactFramesList>
+  <WeaponDurability>100</WeaponDurability>
+  <WeaponSpriteInfo>NULL</WeaponSpriteInfo>
+</WeaponData>

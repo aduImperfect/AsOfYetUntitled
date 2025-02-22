@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<WeaponData>
+  <WeaponName>FireAxe</WeaponName>
+  <WeaponType>WEAPON_HAFTED</WeaponType>
+  <WeaponTraitsList>
+    <WeaponTraitsCount>2</WeaponTraitsCount>
+    <WeaponTraitType>WEAPONTRAIT_HEAVY</WeaponTraitType>
+    <WeaponTraitType>WEAPONTRAIT_TWOHANDED</WeaponTraitType>
+  </WeaponTraitsList>
+  <WeaponDamageType>DAMAGE_SLASH</WeaponDamageType>
+  <WeaponSpecialDamagesList>
+    <WeaponSpecialDamagesCount>2</WeaponSpecialDamagesCount>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_FIRE</WeaponSpecialDamageType>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_CRITICAL</WeaponSpecialDamageType>
+  </WeaponSpecialDamagesList>
+  <WeaponAttackTimingsList>
+    <WeaponAttackTimingsCount>2</WeaponAttackTimingsCount>
+    <WeaponAttackTimingType>ATTACKTIMING_NORMAL</WeaponAttackTimingType>
+    <WeaponAttackTimingType>ATTACKTIMING_CHARGED</WeaponAttackTimingType>
+  </WeaponAttackTimingsList>
+  <WeaponContactFramesList>
+    <WeaponContactFramesCount>2</WeaponContactFramesCount>
+    <WeaponContactFrameType>10</WeaponContactFrameType>
+    <WeaponContactFrameType>14</WeaponContactFrameType>
+  </WeaponContactFramesList>
+  <WeaponDurability>100</WeaponDurability>
+  <WeaponSpriteInfo>NULL</WeaponSpriteInfo>
+</WeaponData>

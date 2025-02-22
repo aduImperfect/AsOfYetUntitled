@@ -177,7 +177,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 7955905153917091122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c631d1fd1b1395143b7ed4d31394e01e, type: 3}
+  m_Script: {fileID: 11500000, guid: 64c879975824d2943bd448c8b3cf1e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   standingOnObject: {fileID: 0}
+  playerSelected: 0
+  destinationSelected: 0
+  destinationObject: {fileID: 0}
+  startingPos: {x: 0, y: 0, z: 0}
+  movingPos: {x: 0, y: 0, z: 0}
+  destinationPos: {x: 0, y: 0, z: 0}
+  finalPath: []
+  finalPathCost: []
+  currentDirection: 0
+  newDirection: 0
+  oldDirectionQuat: {x: 0, y: 0, z: 0, w: 0}
+  newDirectionQuat: {x: 0, y: 0, z: 0, w: 0}
+  lerpSpeed: 0.01
+  timeCountForRotation: 0
+  timeCountForMovement: 0
+  baseDirectionRotationVal: 45
+  isTurning: 0
+  isMoving: 0
+  directionChangeAmount: 0
+  newDestination: {x: 0, y: 0, z: 0}

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<WeaponData>
+  <WeaponName>Stick</WeaponName>
+  <WeaponType>WEAPON_STAFF</WeaponType>
+  <WeaponTraitsList>
+    <WeaponTraitsCount>1</WeaponTraitsCount>
+    <WeaponTraitType>WEAPONTRAIT_LIGHT</WeaponTraitType>
+  </WeaponTraitsList>
+  <WeaponDamageType>DAMAGE_BLUDGEON</WeaponDamageType>
+  <WeaponSpecialDamagesList>
+    <WeaponSpecialDamagesCount>1</WeaponSpecialDamagesCount>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_NONE</WeaponSpecialDamageType>
+  </WeaponSpecialDamagesList>
+  <WeaponAttackTimingsList>
+    <WeaponAttackTimingsCount>2</WeaponAttackTimingsCount>
+    <WeaponAttackTimingType>ATTACKTIMING_NORMAL</WeaponAttackTimingType>
+    <WeaponAttackTimingType>ATTACKTIMING_FAST</WeaponAttackTimingType>
+  </WeaponAttackTimingsList>
+  <WeaponContactFramesList>
+    <WeaponContactFramesCount>2</WeaponContactFramesCount>
+    <WeaponContactFrameType>5</WeaponContactFrameType>
+    <WeaponContactFrameType>4</WeaponContactFrameType>
+  </WeaponContactFramesList>
+  <WeaponDurability>100</WeaponDurability>
+  <WeaponSpriteInfo>NULL</WeaponSpriteInfo>
+</WeaponData>

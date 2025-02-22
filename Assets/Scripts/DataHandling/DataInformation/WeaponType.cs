@@ -1,0 +1,11 @@
+﻿public enum WeaponType
+{
+    WEAPON_FIST = 0,
+    WEAPON_SIMPLE,
+    WEAPON_STAFF,
+    WEAPON_RANGED,
+    WEAPON_HAFTED,
+    WEAPON_SPEAR,
+    //INVALID
+    WEAPON_INVALID = -1,
+}

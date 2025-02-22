@@ -1,0 +1,8 @@
+public enum CharacterMode
+{
+    CHARACTER_PLAYER = 0,
+    CHARACTER_NPC,
+    CHARACTER_ENEMY,
+    CHARACTER_BOSS,
+    CHARACTER_INVALID = -1
+}

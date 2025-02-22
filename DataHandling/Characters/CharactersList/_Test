@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<CharacterFileDataList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <characterDataList>
+    <CharacterFileData>
+      <CharacterFileName>_testRamana</CharacterFileName>
+      <CharacterObjectSubtype>HUMANOID_RAMANA</CharacterObjectSubtype>
+    </CharacterFileData>
+    <CharacterFileData>
+      <CharacterFileName>_Test</CharacterFileName>
+      <CharacterObjectSubtype>HUMANOID_GEETHA</CharacterObjectSubtype>
+    </CharacterFileData>
+  </characterDataList>
+</CharacterFileDataList>

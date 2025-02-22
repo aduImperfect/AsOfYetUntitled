@@ -1,0 +1,8 @@
+﻿public enum AttackTimingType
+{
+    ATTACKTIMING_NORMAL = 0,
+    ATTACKTIMING_FAST,
+    ATTACKTIMING_CHARGED,
+    //INVALID
+    ATTACKTIMING_INVALID = -1,
+}

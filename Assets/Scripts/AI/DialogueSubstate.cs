@@ -1,0 +1,9 @@
+﻿public enum DialogueSubstate
+{
+    DIALOGUESUBSTATE_BEGIN = 0,
+    DIALOGUESUBSTATE_INPROGRESS,
+    DIALOGUESUBSTATE_END,
+    DIALOGUESUBSTATE_NONE,//Add none to every Substate
+    DIALOGUESUBSTATE_INVALID = -1,
+}
+//sdasdasd

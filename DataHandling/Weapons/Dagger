@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<WeaponData>
+  <WeaponName>Dagger</WeaponName>
+  <WeaponType>WEAPON_SIMPLE</WeaponType>
+  <WeaponTraitsList>
+    <WeaponTraitsCount>2</WeaponTraitsCount>
+    <WeaponTraitType>WEAPONTRAIT_LIGHT</WeaponTraitType>
+    <WeaponTraitType>WEAPONTRAIT_THROWN</WeaponTraitType>
+  </WeaponTraitsList>
+  <WeaponDamageType>DAMAGE_SLASH</WeaponDamageType>
+  <WeaponSpecialDamagesList>
+    <WeaponSpecialDamagesCount>2</WeaponSpecialDamagesCount>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_CRITICAL</WeaponSpecialDamageType>
+    <WeaponSpecialDamageType>SPECIALDAMAGE_NONE</WeaponSpecialDamageType>
+  </WeaponSpecialDamagesList>
+  <WeaponAttackTimingsList>
+    <WeaponAttackTimingsCount>1</WeaponAttackTimingsCount>
+    <WeaponAttackTimingType>ATTACKTIMING_FAST</WeaponAttackTimingType>
+  </WeaponAttackTimingsList>
+  <WeaponContactFramesList>
+    <WeaponContactFramesCount>1</WeaponContactFramesCount>
+    <WeaponContactFrameType>4</WeaponContactFrameType>
+  </WeaponContactFramesList>
+  <WeaponDurability>89</WeaponDurability>
+  <WeaponSpriteInfo>Stick</WeaponSpriteInfo>
+</WeaponData>
