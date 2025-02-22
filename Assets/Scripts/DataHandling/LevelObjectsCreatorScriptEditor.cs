@@ -171,7 +171,7 @@ public class LevelObjectsCreatorScriptEditor : Editor
 
         GUILayout.Space(20);
         
-        GUILayout.Label("Text Field ADD/REMOVE Level Objects");
+        GUILayout.Label("Text Field ADD/REMOVE Level Objects Subtypes");
         
         GUILayout.BeginHorizontal();
         newLevelObjectsSubtype = EditorGUILayout.TextField(newLevelObjectsSubtype);
@@ -189,7 +189,7 @@ public class LevelObjectsCreatorScriptEditor : Editor
 
         GUILayout.Space(10);
 
-        GUILayout.Label("Text Field To REMOVE Level Objects");
+        GUILayout.Label("Text Field To REMOVE Level Objects Types");
 
         GUILayout.BeginHorizontal();
         newLevelObjectsType = EditorGUILayout.TextField(newLevelObjectsType);
