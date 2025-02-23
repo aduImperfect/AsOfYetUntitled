@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2447492012689629016}
   - component: {fileID: 3760816389585254633}
   - component: {fileID: 741685152581694287}
-  - component: {fileID: 5736654862942933549}
+  - component: {fileID: 7468068019258647144}
   m_Layer: 0
   m_Name: FLOOR_MUD
   m_TagString: Floor
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189384274796385333}
   m_Mesh: {fileID: -6831440722055496184, guid: 869acfa7c0fdda84cb1d0cb207d6f83a, type: 3}
---- !u!65 &5736654862942933549
+--- !u!65 &7468068019258647144
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,5 +103,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25.402025, y: 25.406048, z: 4.4770694}
-  m_Center: {x: 0, y: -2.4092158e-16, z: -0.51695323}
+  m_Size: {x: 1.016081, y: 1.0162419, z: 0.22043902}
+  m_Center: {x: 0, y: 0, z: 0}
