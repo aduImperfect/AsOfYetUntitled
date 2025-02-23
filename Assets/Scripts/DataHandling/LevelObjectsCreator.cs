@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -224,6 +225,7 @@ public class LevelObjectsCreator : MonoBehaviour
                 string[] objParentNames = objParentName.Split(new string[] { "__" }, StringSplitOptions.RemoveEmptyEntries);
 
                 mainObjData.SetParentName(mainAreaObj.name + "__" + objParentNames[1]);
+
 
                 mainLevelObjects.levelObjList.Add(mainObjData);
             }
@@ -509,6 +511,7 @@ public class LevelObjectsCreator : MonoBehaviour
             areaObj.name = areaObjName;
             areaObj.transform.parent = levelObjectsCreator.transform;
             areaObj.transform.position = Vector3.zero;
+            InternalEditorUtility.AddTag("Area");
             areaObj.tag = "Area";
         }
 
@@ -525,6 +528,7 @@ public class LevelObjectsCreator : MonoBehaviour
             parentObj.name = parentObjName;
             parentObj.transform.parent = areaObj.transform;
             parentObj.transform.localPosition = Vector3.zero;
+            InternalEditorUtility.AddTag("Parent");
             parentObj.tag = "Parent";
         }
 
@@ -558,6 +562,7 @@ public class LevelObjectsCreator : MonoBehaviour
             areaObj.name = areaObjName;
             areaObj.transform.parent = levelObjectsCreator.transform;
             //areaObj.transform.position = Vector3.zero;
+            InternalEditorUtility.AddTag("Area");
             areaObj.tag = "Area";
         }
 
@@ -577,6 +582,7 @@ public class LevelObjectsCreator : MonoBehaviour
                         parentObj = new GameObject();
                         parentObj.name = parentObjName;
                         parentObj.transform.parent = areaObj.transform;
+                        InternalEditorUtility.AddTag("Parent");
                         parentObj.tag = "Parent";
                     }
 
@@ -616,6 +622,7 @@ public class LevelObjectsCreator : MonoBehaviour
                 areaObj.name = areaObjName;
                 areaObj.transform.parent = levelObjectsCreator.transform;
                 areaObj.transform.position = new Vector3(lvlObj.levelObjectsAreaPositionX, lvlObj.levelObjectsAreaPositionY, lvlObj.levelObjectsAreaPositionZ);
+                InternalEditorUtility.AddTag("Area");
                 areaObj.tag = "Area";
             }
 
@@ -636,6 +643,7 @@ public class LevelObjectsCreator : MonoBehaviour
                     parentObj = new GameObject();
                     parentObj.name = parentObjName;
                     parentObj.transform.parent = areaObj.transform;
+                    InternalEditorUtility.AddTag("Parent");
                     parentObj.tag = "Parent";
                 }
 

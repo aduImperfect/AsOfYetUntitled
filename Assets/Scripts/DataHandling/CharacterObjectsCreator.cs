@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class CharacterObjectsCreator : MonoBehaviour
@@ -155,6 +156,7 @@ public class CharacterObjectsCreator : MonoBehaviour
             parentObj = new GameObject();
             parentObj.name = parentObjName;
             parentObj.transform.parent = characterObjectsCreator.transform;
+            InternalEditorUtility.AddTag("Parent");
             parentObj.tag = "Parent";
             parentObj.transform.position = Vector2.zero;
         }
@@ -279,6 +281,7 @@ public class CharacterObjectsCreator : MonoBehaviour
             parentObj = new GameObject();
             parentObj.name = parentObjName;
             parentObj.transform.parent = characterObjectCreator.transform;
+            InternalEditorUtility.AddTag("Parent");
             parentObj.tag = "Parent";
             parentObj.transform.position = Vector2.zero;
         }
