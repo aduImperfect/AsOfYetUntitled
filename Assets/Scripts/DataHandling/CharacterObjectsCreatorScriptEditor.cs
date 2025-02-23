@@ -196,5 +196,12 @@ public class CharacterObjectsCreatorScriptEditor : Editor
         {
             CharacterObjectTypesContainer.RemoveCharacterObjectType(newCharacterObjectsType.ToUpper());
         }
+
+        GUILayout.Space(10);
+
+        if (GUILayout.Button("Updating Tags For Character Objects Prefabs"))
+        {
+            CharacterObjectTypesContainer.UpdatingTagsForCharacterObjectsPrefabs();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
 public static class LevelObjectTypesContainer
@@ -73,7 +74,7 @@ public static class LevelObjectTypesContainer
         GatherAllLevelObjectTypesAndSubtypesFromPrefabs();
     }
 
-    public static void AddCharacterObjectsSubtype(string objSubtype)
+    public static void AddLevelObjectsSubtype(string objSubtype)
     {
         string[] objSubTypeStrs = objSubtype.Split(new string[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -214,6 +215,9 @@ public static class LevelObjectTypesContainer
         Directory.Delete(Path.Combine(FilePaths.GetFullPrefabLevelObjectTypesPath(), objType), true);
         File.Delete(Path.Combine(FilePaths.GetFullPrefabLevelObjectTypesPath(), objType + FilePaths.GetMetaExtension()));
 
+        string objTypeTag = objType.Substring(0, 1) + objType.Substring(1).ToLower();
+        InternalEditorUtility.RemoveTag(objTypeTag);
+
         AssetDatabase.Refresh();
 
         GatherAllLevelObjectTypesAndSubtypesFromPrefabs();
@@ -225,6 +229,10 @@ public static class LevelObjectTypesContainer
 
         GameObject gObject = new GameObject();
         gObject.name = objSubtype;
+
+        string objTypeTag = objType.Substring(0, 1) + objType.Substring(1).ToLower();
+        InternalEditorUtility.AddTag(objTypeTag);
+        gObject.tag = objTypeTag;
 
         bool prefabSuccess = false;
         PrefabUtility.SaveAsPrefabAsset(gObject, Path.Combine(FilePaths.GetFullPrefabLevelObjectTypesPath(), objType, objSubtype + FilePaths.GetPrefabExtension()), out prefabSuccess);
@@ -246,5 +254,24 @@ public static class LevelObjectTypesContainer
 
         AssetDatabase.Refresh();
         GatherAllLevelObjectTypesAndSubtypesFromPrefabs();
+    }
+
+    public static void UpdatingTagsForLevelObjectsPrefabs()
+    {
+        string[] prefabPaths = AssetDatabase.FindAssets("t:Prefab", new string[] { FilePaths.GetFullPrefabLevelObjectTypesPath() });
+
+        foreach (string path in prefabPaths)
+        {
+            string fullPath = AssetDatabase.GUIDToAssetPath(path);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(fullPath);
+
+            string[] prefabSubNames = prefab.name.Split(new string[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
+
+            string objTypeTag = prefabSubNames[0].Substring(0, 1) + prefabSubNames[0].Substring(1).ToLower();
+            if (!prefab.CompareTag(objTypeTag))
+            {
+                prefab.tag = objTypeTag;
+            }
+        }
     }
 }

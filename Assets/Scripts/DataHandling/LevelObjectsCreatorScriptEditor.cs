@@ -179,7 +179,7 @@ public class LevelObjectsCreatorScriptEditor : Editor
 
         if (GUILayout.Button("Add New Level Objects Subtype"))
         {
-            LevelObjectTypesContainer.AddCharacterObjectsSubtype(newLevelObjectsSubtype.ToUpper());
+            LevelObjectTypesContainer.AddLevelObjectsSubtype(newLevelObjectsSubtype.ToUpper());
         }
 
         if (GUILayout.Button("Remove Level Objects Subtype"))
@@ -198,6 +198,13 @@ public class LevelObjectsCreatorScriptEditor : Editor
         if (GUILayout.Button("Remove Level Objects Type"))
         {
             LevelObjectTypesContainer.RemoveLevelObjectType(newLevelObjectsType.ToUpper());
+        }
+
+        GUILayout.Space(10);
+
+        if (GUILayout.Button("Updating Tags For Level Objects Prefabs"))
+        {
+            LevelObjectTypesContainer.UpdatingTagsForLevelObjectsPrefabs();
         }
     }
 }
